@@ -977,3 +977,167 @@ p {
 .text-center {
     text-align: center;
 }
+
+/* 响应式断点系统 */
+:root {
+    /* 断点 */
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+    
+    /* 容器最大宽度 */
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+    --container-xxl: 1320px;
+}
+
+/* 基础容器 */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* 响应式容器 */
+@media (min-width: 576px) {
+    .container {
+        max-width: var(--container-sm);
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: var(--container-md);
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: var(--container-lg);
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-xl);
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: var(--container-xxl);
+    }
+}
+
+/* 移动端优化 */
+@media (max-width: 767px) {
+    /* 导航 */
+    .header__container {
+        height: 60px;
+    }
+    
+    .nav {
+        display: none;
+    }
+    
+    /* 英雄区域 */
+    .hero {
+        padding-top: 80px;
+        min-height: calc(100vh - 60px);
+    }
+    
+    .hero__title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .hero__description {
+        font-size: 1rem;
+    }
+    
+    /* 项目展示 */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-card {
+        margin-bottom: 20px;
+    }
+    
+    /* 流程步骤 */
+    .process {
+        padding: 40px 0;
+    }
+    
+    .process-step {
+        margin-bottom: 30px;
+    }
+    
+    /* 关于部分 */
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        margin-top: 40px;
+    }
+    
+    /* 联系表单 */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        margin-top: 40px;
+    }
+}
+
+/* 平板优化 */
+@media (min-width: 768px) and (max-width: 991px) {
+    .hero__title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* 桌面优化 */
+@media (min-width: 992px) {
+    .hero__title {
+        font-size: clamp(3rem, 5vw, 4.5rem);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1200px) {
+    .hero__title {
+        font-size: clamp(3.5rem, 4vw, 5rem);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
