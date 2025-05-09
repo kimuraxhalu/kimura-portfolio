@@ -1,94 +1,61 @@
-// 移動選單切換
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const menuClose = document.getElementById('menu-close');
+// 移动端菜单切换
+const menuToggle = document.querySelector('.header__menu-toggle');
+const nav = document.querySelector('.header__nav');
 
-if (menuToggle && mobileMenu) {
+if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
-        menuToggle.classList.add('active');
-        mobileMenu.classList.add('active');
-        document.body.classList.add('no-scroll');
-    });
-    
-    // 關閉選單按鈕
-    if (menuClose) {
-        menuClose.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
-    }
-    
-    // 點擊移動選單項目後關閉選單
-    const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav__link');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
-    });
-    
-    // 確保點擊任何地方都可以關閉選單
-    mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
+        nav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
     });
 }
 
-// 捲動時頭部變化
+// 滚动时改变header样式
 const header = document.querySelector('.header');
+let lastScroll = 0;
+
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
+    
+    lastScroll = currentScroll;
 });
 
-// 自定義鼠標
-const cursor = document.querySelector('.cursor');
+// 自定义光标
+const cursor = document.createElement('div');
+cursor.classList.add('cursor');
+document.body.appendChild(cursor);
 
-if (cursor) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-    
-    document.addEventListener('mousedown', () => {
-        cursor.classList.add('active');
-    });
-    
-    document.addEventListener('mouseup', () => {
-        cursor.classList.remove('active');
-    });
-    
-    // 在所有連結和按鈕上增加hover效果
-    const hoverElements = document.querySelectorAll('a, button');
-    hoverElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-            cursor.classList.add('active');
-        });
-        element.addEventListener('mouseleave', () => {
-            cursor.classList.remove('active');
-        });
-    });
-}
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
 
-// 視窗滾動動畫
+// 为链接和按钮添加光标效果
+const links = document.querySelectorAll('a, button, .btn');
+links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor--hover');
+    });
+    
+    link.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor--hover');
+    });
+});
+
+// 滚动动画
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealOnScroll = () => {
-    const windowHeight = window.innerHeight;
-    const revealPoint = 150;
-    
     revealElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
         
-        if (elementTop < windowHeight - revealPoint) {
+        if (elementTop < windowHeight - 100) {
             element.classList.add('active');
         }
     });
@@ -97,33 +64,55 @@ const revealOnScroll = () => {
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
-// 導航連結突出顯示
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav__link');
+// 导航链接高亮
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.header__nav-link');
 
-window.addEventListener('scroll', () => {
-    let current = '';
+const highlightNavLink = () => {
+    const scrollY = window.pageYOffset;
     
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
         
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
         }
     });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
+};
+
+window.addEventListener('scroll', highlightNavLink);
+
+// 更新版权年份
+const yearElement = document.querySelector('.year');
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
+
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // 关闭移动端菜单
+            if (nav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
         }
     });
 });
-
-// 更新頁腳版權年份
-const copyrightYearElement = document.getElementById('copyright-year');
-if (copyrightYearElement) {
-    const currentYear = new Date().getFullYear();
-    copyrightYearElement.textContent = currentYear;
-}
