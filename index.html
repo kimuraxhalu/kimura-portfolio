@@ -7,6 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 21st.dev framework -->
+    <link rel="stylesheet" href="https://cdn.21st.dev/css/framework.min.css">
+    <script src="https://cdn.21st.dev/js/core.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -56,25 +59,25 @@
     </div>
     
     <!-- 英雄區域 -->
-    <section class="hero" id="home">
-        <div class="hero__gradient"></div>
+    <section class="hero tsd-parallax-section" id="home" data-effect="parallax" data-speed="0.6">
+        <div class="hero__gradient tsd-glow" data-color="#5a65f2" data-size="80" data-opacity="0.3"></div>
         <div class="container">
-            <div class="hero__label reveal">
+            <div class="hero__label reveal tsd-stagger" data-delay="0.1">
                 <span class="hero__label-line"></span>
                 <span class="hero__label-text">創意設計師 × 策略思考者</span>
             </div>
             
-            <h1 class="hero__title reveal">
-                在<span class="accent">文化速度</span><br>
+            <h1 class="hero__title tsd-stagger" data-delay="0.2">
+                在<span class="accent tsd-highlight" data-color="#5a65f2">文化速度</span><br>
                 中設計未來
             </h1>
             
-            <p class="hero__description reveal">
+            <p class="hero__description tsd-stagger" data-delay="0.3">
                 我不只是設計視覺，而是策劃思想與體驗。在快速變化的文化浪潮中，幫助品牌脫穎而出，創造具有深度連結與意義的設計。
             </p>
             
-            <div class="hero__cta reveal">
-                <a href="#work" class="btn btn--primary">
+            <div class="hero__cta tsd-stagger" data-delay="0.4">
+                <a href="#work" class="btn btn--primary tsd-hover-effect" data-effect="ripple">
                     瀏覽作品集
                     <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
@@ -99,33 +102,33 @@
             </div>
         </div>
         
-        <div class="hero__scroll">
+        <div class="hero__scroll tsd-scroll-indicator">
             <span>向下滾動</span>
             <span class="hero__scroll-line"></span>
         </div>
     </section>
     
     <!-- 作品區域 -->
-    <section class="section" id="work">
+    <section class="section tsd-section" id="work" data-effect="reveal">
         <div class="container">
             <div class="section__header">
-                <div class="section__label reveal">
+                <div class="section__label tsd-fade-in" data-duration="0.8">
                     <span class="section__label-line"></span>
                     <span class="section__label-text">精選作品</span>
                 </div>
                 
-                <h2 class="section__title reveal">
+                <h2 class="section__title tsd-fade-in" data-duration="0.8" data-delay="0.1">
                     設計不只是外表，<br>而是解決問題
                 </h2>
                 
-                <p class="section__description reveal">
+                <p class="section__description tsd-fade-in" data-duration="0.8" data-delay="0.2">
                     每個專案不僅是視覺呈現，更是解決問題和創造價值的過程。透過策略思考和創意執行，達成有意義的商業成果。
                 </p>
             </div>
             
-            <div class="projects-grid item-grid" data-stagger="0.1">
+            <div class="projects-grid tsd-item-grid" data-stagger="0.1">
                 <!-- 專案 1 -->
-                <div class="project-card project-card--1" data-hover="scale" data-scale="1.02">
+                <div class="project-card project-card--1 tsd-card" data-hover="scale" data-scale="1.02">
                     <img src="https://i.imgur.com/KVfTRtH.jpg" alt="SOFTCASES品牌重塑" class="project-card__image">
                     <div class="project-card__overlay">
                         <div class="project-card__category">品牌設計</div>
@@ -146,7 +149,7 @@
                 </div>
                 
                 <!-- 專案 2 -->
-                <div class="project-card project-card--2" data-hover="scale" data-scale="1.02" data-delay="0.1">
+                <div class="project-card project-card--2 tsd-card" data-hover="scale" data-scale="1.02" data-delay="0.1">
                     <img src="https://i.imgur.com/1CfmMxD.jpg" alt="Hometown Design智能家居" class="project-card__image">
                     <div class="project-card__overlay">
                         <div class="project-card__category">數位體驗</div>
@@ -163,7 +166,7 @@
                 </div>
                 
                 <!-- 專案 3 -->
-                <div class="project-card project-card--3" data-hover="scale" data-scale="1.02" data-delay="0.2">
+                <div class="project-card project-card--3 tsd-card" data-hover="scale" data-scale="1.02" data-delay="0.2">
                     <img src="https://i.imgur.com/V8y0BLr.jpg" alt="immi移民顧問品牌策略" class="project-card__image">
                     <div class="project-card__overlay">
                         <div class="project-card__category">品牌策略</div>
@@ -180,7 +183,7 @@
                 </div>
                 
                 <!-- 專案 4 -->
-                <div class="project-card project-card--4" data-hover="scale" data-scale="1.02" data-delay="0.3">
+                <div class="project-card project-card--4 tsd-card" data-hover="scale" data-scale="1.02" data-delay="0.3">
                     <img src="https://i.imgur.com/ksph6jN.jpg" alt="AI輔助創意工作流程" class="project-card__image">
                     <div class="project-card__overlay">
                         <div class="project-card__category">AI創意</div>
@@ -204,55 +207,55 @@
     </section>
     
     <!-- 方法論區域 -->
-    <section class="section section--alt" id="process">
+    <section class="section section--alt tsd-section" id="process" data-effect="reveal" data-direction="bottom">
         <div class="container">
             <div class="section__header">
-                <div class="section__label reveal">
+                <div class="section__label tsd-fade-in" data-duration="0.8">
                     <span class="section__label-line"></span>
                     <span class="section__label-text">設計方法論</span>
                 </div>
                 
-                <h2 class="section__title reveal">
+                <h2 class="section__title tsd-fade-in" data-duration="0.8" data-delay="0.1">
                     設計不只是外觀<br>而是解決問題的過程
                 </h2>
                 
-                <p class="section__description reveal">
+                <p class="section__description tsd-fade-in" data-duration="0.8" data-delay="0.2">
                     我的設計方法論融合策略思考與創意，將複雜問題轉化為有效的視覺溝通。
                 </p>
             </div>
             
             <!-- 流程步驟 -->
-            <div class="process" data-animation="flow">
+            <div class="process tsd-process" data-animation="flow">
                 <!-- 步驟 1 -->
-                <div class="process-step" data-delay="0">
+                <div class="process-step tsd-process-step" data-delay="0">
                     <div class="process-step__number">01</div>
                     <h3 class="process-step__title">深度理解</h3>
                     <p class="process-step__description">探索用戶需求與業務目標的本質</p>
                 </div>
                 
                 <!-- 步驟 2 -->
-                <div class="process-step" data-delay="0.1">
+                <div class="process-step tsd-process-step" data-delay="0.1">
                     <div class="process-step__number">02</div>
                     <h3 class="process-step__title">策略思考</h3>
                     <p class="process-step__description">確立清晰的方向與差異化定位</p>
                 </div>
                 
                 <!-- 步驟 3 -->
-                <div class="process-step" data-delay="0.2">
+                <div class="process-step tsd-process-step" data-delay="0.2">
                     <div class="process-step__number">03</div>
                     <h3 class="process-step__title">創意概念</h3>
                     <p class="process-step__description">發展突破性創意與設計解決方案</p>
                 </div>
                 
                 <!-- 步驟 4 -->
-                <div class="process-step" data-delay="0.3">
+                <div class="process-step tsd-process-step" data-delay="0.3">
                     <div class="process-step__number">04</div>
                     <h3 class="process-step__title">精緻執行</h3>
                     <p class="process-step__description">細節打磨與視覺系統建立</p>
                 </div>
                 
                 <!-- 步驟 5 -->
-                <div class="process-step" data-delay="0.4">
+                <div class="process-step tsd-process-step" data-delay="0.4">
                     <div class="process-step__number">05</div>
                     <h3 class="process-step__title">成果檢驗</h3>
                     <p class="process-step__description">評估設計對業務目標的實際影響</p>
@@ -262,27 +265,27 @@
     </section>
     
     <!-- 關於我區域 -->
-    <section class="section" id="about">
+    <section class="section tsd-section" id="about" data-effect="reveal" data-direction="left">
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
-                    <div class="section__label reveal">
+                    <div class="section__label tsd-fade-in" data-duration="0.8">
                         <span class="section__label-line"></span>
                         <span class="section__label-text">關於我</span>
                     </div>
                     
-                    <h2 class="section__title reveal">
+                    <h2 class="section__title tsd-fade-in" data-duration="0.8" data-delay="0.1">
                         在複雜中尋找簡單，<br>在混沌中創造秩序
                     </h2>
                     
-                    <div class="about-content__text" data-animation="sequential" data-delay="0.2">
+                    <div class="about-content__text tsd-content" data-animation="sequential" data-delay="0.2">
                         <p>我是Kimura，一位在品牌策略與視覺設計領域擁有15年經驗的創意專家。我的旅程始於平面設計，隨後擴展到數位體驗、品牌策略和AI創意領域。</p>
                         <p>我的設計理念是：<strong>設計不只是裝飾，而是解決問題的策略工具</strong>。我深信，最有效的設計源於對用戶、業務與文化的深刻理解，並將這些洞察轉化為有意義的體驗。</p>
                         <p>在科技與人文交匯的時代，我尤其關注如何運用新興技術（如AI）來擴展創意可能性，同時保持人性化的核心價值。</p>
                     </div>
                     
-                    <div class="reveal" data-delay="0.5">
-                        <a href="#contact" class="btn btn--primary">
+                    <div class="tsd-fade-in" data-delay="0.5">
+                        <a href="#contact" class="btn btn--primary tsd-hover-effect" data-effect="ripple">
                             聯絡我
                             <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14"></path>
@@ -292,19 +295,19 @@
                     </div>
                 </div>
                 
-                <div class="about-image reveal" data-delay="0.3">
-                    <img src="https://i.imgur.com/8JqFRI5.jpg" alt="Kimura" class="mask-effect" data-mask="circle">
-                    <div class="about-stats floating" data-amplitude="5" data-speed="2">
+                <div class="about-image tsd-reveal-image" data-delay="0.3">
+                    <img src="https://i.imgur.com/8JqFRI5.jpg" alt="Kimura" class="tsd-mask-effect" data-mask="circle">
+                    <div class="about-stats tsd-floating" data-amplitude="5" data-speed="2">
                         <div class="about-stat">
-                            <div class="about-stat__value counter" data-value="15" data-suffix="+">0+</div>
+                            <div class="about-stat__value tsd-counter" data-value="15" data-suffix="+">0+</div>
                             <div class="about-stat__label">設計經驗</div>
                         </div>
                         <div class="about-stat">
-                            <div class="about-stat__value counter" data-value="180" data-suffix="+">0+</div>
+                            <div class="about-stat__value tsd-counter" data-value="180" data-suffix="+">0+</div>
                             <div class="about-stat__label">完成項目</div>
                         </div>
                         <div class="about-stat">
-                            <div class="about-stat__value counter" data-value="40" data-suffix="+">0+</div>
+                            <div class="about-stat__value tsd-counter" data-value="40" data-suffix="+">0+</div>
                             <div class="about-stat__label">滿意客戶</div>
                         </div>
                     </div>
@@ -316,127 +319,106 @@
     <!-- 聯絡區域 -->
     <section class="section section--alt" id="contact">
         <div class="container">
-            <div class="section__header">
-                <div class="section__label reveal">
+            <div class="section__header text-center">
+                <div class="section__label reveal" style="justify-content: center;">
                     <span class="section__label-line"></span>
-                    <span class="section__label-text">聯絡我</span>
+                    <span class="section__label-text">聯繫方式</span>
                 </div>
                 
-                <h2 class="section__title reveal">
-                    讓我們一起<br>創造有意義的設計
+                <h2 class="section__title reveal" style="text-align: center;">
+                    對我的作品感興趣？
                 </h2>
                 
-                <p class="section__description reveal">
-                    無論是品牌重塑、產品設計還是創意策略，我都很樂意與您討論如何為您的項目帶來價值。
+                <p class="section__description reveal" style="text-align: center; margin: 0 auto;">
+                    無論您有任何問題或想了解更多，歡迎通過以下方式與我聯繫。
                 </p>
             </div>
             
-            <div class="contact-grid">
+            <div class="contact-grid reveal reveal-delay-2">
                 <div class="contact-info">
-                    <div class="contact-card reveal">
-                        <div class="contact-card__icon">
+                    <div class="contact-method">
+                        <div class="contact-method__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </div>
-                        <h3 class="contact-card__title">電子郵件</h3>
-                        <a href="mailto:kimura@example.com" class="contact-card__link">kimura@example.com</a>
+                        <div class="contact-method__content">
+                            <h3 class="contact-method__title">電子郵件</h3>
+                            <a href="mailto:kimuraxhalu@gmail.com" class="contact-method__value">kimuraxhalu@gmail.com</a>
+                        </div>
                     </div>
                     
-                    <div class="contact-card reveal" data-delay="0.1">
-                        <div class="contact-card__icon">
+                    <div class="contact-method">
+                        <div class="contact-method__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
                         </div>
-                        <h3 class="contact-card__title">電話</h3>
-                        <a href="tel:+886912345678" class="contact-card__link">+886 912 345 678</a>
+                        <div class="contact-method__content">
+                            <h3 class="contact-method__title">電話</h3>
+                            <a href="tel:+85268861347" class="contact-method__value">+852 6886 1347</a>
+                        </div>
                     </div>
                     
-                    <div class="contact-card reveal" data-delay="0.2">
-                        <div class="contact-card__icon">
+                    <div class="contact-method">
+                        <div class="contact-method__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                             </svg>
                         </div>
-                        <h3 class="contact-card__title">位置</h3>
-                        <p class="contact-card__text">台北市信義區</p>
+                        <div class="contact-method__content">
+                            <h3 class="contact-method__title">作品集下載</h3>
+                            <a href="#" class="contact-method__value">下載完整PDF作品集</a>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="contact-form reveal">
-                    <form class="form">
-                        <div class="form__group">
-                            <label for="name" class="form__label">姓名</label>
-                            <input type="text" id="name" class="form__input" required>
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="email" class="form__label">電子郵件</label>
-                            <input type="email" id="email" class="form__input" required>
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="message" class="form__label">訊息</label>
-                            <textarea id="message" class="form__textarea" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn--primary">
-                            發送訊息
-                            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                             </svg>
-                        </button>
-                    </form>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- 頁尾 -->
+    <!-- 頁腳 -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-                <div class="footer__brand">
-                    <a href="#" class="footer__logo">Kimura</a>
-                    <p class="footer__description">
-                        創造有意義的設計，<br>
-                        連結品牌與用戶
-                    </p>
-                </div>
-                
-                <div class="footer__social">
-                    <a href="#" class="footer__social-link" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="#" class="footer__social-link" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </a>
-                    <a href="#" class="footer__social-link" aria-label="Behance">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4v4h4v-4z"></path>
-                            <path d="M2 12h4v4H2v-4z"></path>
-                            <path d="M12 2v20"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <div class="container footer__container">
+            <a href="#" class="footer__logo">K<span class="accent">.</span></a>
             
-            <div class="footer__bottom">
-                <p class="footer__copyright">
-                    © <span class="year">2024</span> Kimura. All rights reserved.
-                </p>
+            <nav class="footer__nav">
+                <a href="#work" class="footer__nav-link">作品</a>
+                <a href="#process" class="footer__nav-link">方法論</a>
+                <a href="#about" class="footer__nav-link">關於我</a>
+                <a href="#contact" class="footer__nav-link">聯絡</a>
+            </nav>
+            
+            <div class="footer__copyright">
+                © <span id="copyright-year">2025</span> Kimura. 保留所有權利
             </div>
         </div>
     </footer>

@@ -1,61 +1,94 @@
-// 移动端菜单切换
-const menuToggle = document.querySelector('.header__menu-toggle');
-const nav = document.querySelector('.header__nav');
+// 移動選單切換
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuClose = document.getElementById('menu-close');
 
-if (menuToggle && nav) {
+if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuToggle.classList.toggle('active');
+        menuToggle.classList.add('active');
+        mobileMenu.classList.add('active');
+        document.body.classList.add('no-scroll');
+    });
+    
+    // 關閉選單按鈕
+    if (menuClose) {
+        menuClose.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+    
+    // 點擊移動選單項目後關閉選單
+    const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav__link');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    });
+    
+    // 確保點擊任何地方都可以關閉選單
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
     });
 }
 
-// 滚动时改变header样式
+// 捲動時頭部變化
 const header = document.querySelector('.header');
-let lastScroll = 0;
-
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
+    if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
 });
 
-// 自定义光标
-const cursor = document.createElement('div');
-cursor.classList.add('cursor');
-document.body.appendChild(cursor);
+// 自定義鼠標
+const cursor = document.querySelector('.cursor');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
-// 为链接和按钮添加光标效果
-const links = document.querySelectorAll('a, button, .btn');
-links.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        cursor.classList.add('cursor--hover');
+if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
     
-    link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('cursor--hover');
+    document.addEventListener('mousedown', () => {
+        cursor.classList.add('active');
     });
-});
+    
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('active');
+    });
+    
+    // 在所有連結和按鈕上增加hover效果
+    const hoverElements = document.querySelectorAll('a, button');
+    hoverElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.classList.add('active');
+        });
+        element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('active');
+        });
+    });
+}
 
-// 滚动动画
+// 視窗滾動動畫
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150;
+    
     revealElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
         
-        if (elementTop < windowHeight - 100) {
+        if (elementTop < windowHeight - revealPoint) {
             element.classList.add('active');
         }
     });
@@ -64,55 +97,33 @@ const revealOnScroll = () => {
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
-// 导航链接高亮
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.header__nav-link');
+// 導航連結突出顯示
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav__link');
 
-const highlightNavLink = () => {
-    const scrollY = window.pageYOffset;
+window.addEventListener('scroll', () => {
+    let current = '';
     
     sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
         
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
+        if (window.pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
         }
     });
-};
-
-window.addEventListener('scroll', highlightNavLink);
-
-// 更新版权年份
-const yearElement = document.querySelector('.year');
-if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-}
-
-// 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
-            
-            // 关闭移动端菜单
-            if (nav && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                menuToggle.classList.remove('active');
-            }
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+            link.classList.add('active');
         }
     });
 });
+
+// 更新頁腳版權年份
+const copyrightYearElement = document.getElementById('copyright-year');
+if (copyrightYearElement) {
+    const currentYear = new Date().getFullYear();
+    copyrightYearElement.textContent = currentYear;
+}
